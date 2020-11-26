@@ -11,9 +11,7 @@
 | first_name         | string  | null: false               |
 | last_kana          | string  | null: false               |
 | first_kana         | string  | null: false               |
-| year_id            | integer | null: false               |
-| month_id           | integer | null: false               |
-| day_id             | integer | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -61,7 +59,7 @@
 | city          | string     | null: false                    |
 | street        | integer    | null: false                    |
 | phone         | string     | null: false                    |
-| building      | integer    | null: false                    |
+| building      | integer    |                                |
 | buy           | references | null: false, foreign_key: true |
 
 ### Association
