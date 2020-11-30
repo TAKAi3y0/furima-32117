@@ -139,5 +139,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include('First kana kana Full-width katakana characters')
     end
+
+    it 'メールアドレスは、@を含む必要があること' do
+      @user.email = 'xxxxxxxxxxxx'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Email is invalid')
+    end
   end
 end
