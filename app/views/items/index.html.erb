@@ -119,7 +119,7 @@
 
       <% @products.each do |product| %>
       <li class='list'>
-        <%= link_to item_path(product.id), method: :get do %>
+        <%= link_to item_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
 
