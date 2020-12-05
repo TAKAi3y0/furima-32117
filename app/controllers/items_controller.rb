@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @products = Product.all.includes(:user).order(id: :DESC)
@@ -7,6 +7,10 @@ class ItemsController < ApplicationController
 
   def new
     @product = Product.new
+  end
+
+  def show
+    @product = Product.find(params[:id])
   end
 
   def create
