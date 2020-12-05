@@ -91,7 +91,7 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include('Price Out of setting range')
       end
 
-      it 'ユーザーが紐付いていないとツイートは保存できない' do
+      it 'ユーザーが紐付いていないと商品は保存できない' do
         @product.user = nil
         @product.valid?
         expect(@product.errors.full_messages).to include('User must exist')
