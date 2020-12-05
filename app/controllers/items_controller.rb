@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :move_to_index, only: [:edit]
+  before_action :product_info, only: [:show, :edit, :update]
 
   def index
     @products = Product.all.includes(:user).order(id: :DESC)
@@ -20,17 +21,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    if @product.save
+    if @product.update(product_params)
       redirect_to item_path(@product.id)
     else
       render :edit
@@ -47,4 +44,9 @@ class ItemsController < ApplicationController
     @product = Product.find(params[:id])
     redirect_to action: :index unless @product.user == current_user # || @product.buy.nil?
   end
+
+  def product_info
+    @product = Product.find(params[:id])
+  end
+
 end
