@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :move_to_index, only: [:edit]
-  before_action :product_info, only: [:show, :edit, :update]
+  before_action :move_to_index, only: [:edit, :destroy]
+  before_action :product_info, only: [:show, :update]
 
   def index
     @products = Product.all.includes(:user).order(id: :DESC)
@@ -34,6 +34,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @product.destroy
+    redirect_to root_path
+  end
+
   private
 
   def product_params
@@ -48,5 +53,4 @@ class ItemsController < ApplicationController
   def product_info
     @product = Product.find(params[:id])
   end
-
 end
