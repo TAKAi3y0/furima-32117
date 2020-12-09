@@ -71,6 +71,16 @@ RSpec.describe ProductBuy, type: :model do
         @product_buy.valid?
         expect(@product_buy.errors.full_messages).to include("Token can't be blank")
       end
+      it 'user_idが空では保存できないこと' do
+        @product_buy.user_id = nil
+        @product_buy.valid?
+        expect(@product_buy.errors.full_messages).to include("User can't be blank")
+      end
+      it 'product_idが空では保存できないこと' do
+        @product_buy.product_id = nil
+        @product_buy.valid?
+        expect(@product_buy.errors.full_messages).to include("Product can't be blank")
+      end
     end
   end
 end
