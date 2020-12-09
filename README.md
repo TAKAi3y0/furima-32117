@@ -52,15 +52,15 @@
 
 ## addresses テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| zipcode       | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| city          | string     | null: false                    |
-| street        | integer    | null: false                    |
-| phone         | string     | null: false                    |
-| building      | integer    |                                |
-| buy           | references | null: false, foreign_key: true |
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| zipcode  | string     | null: false                    |
+| area_id  | integer    | null: false                    |
+| city     | string     | null: false                    |
+| street   | string     | null: false                    |
+| phone    | string     | null: false                    |
+| building | integer    |                                |
+| buy      | references | null: false, foreign_key: true |
 
 ### Association
 
