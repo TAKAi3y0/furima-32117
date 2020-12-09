@@ -64,5 +64,9 @@ RSpec.describe ProductBuy, type: :model do
       @product_buy.valid?
       expect(@product_buy.errors.full_messages).to include("Token can't be blank")
     end
+    it 'buildingは空でも保存できること' do
+      @product_buy.building = nil
+      expect(@product_buy).to be_valid
+    end
   end
 end

@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index
+  before_action :product_info
 
   def index
-    @product = Product.find(params[:item_id])
     @product_buy = ProductBuy.new
   end
 
   def create
-    @product = Product.find(params[:item_id])
     @product_buy = ProductBuy.new(order_params)
     if @product_buy.valid?
       pay_item
@@ -36,5 +35,9 @@ class OrdersController < ApplicationController
   def move_to_index
     @product = Product.find(params[:item_id])
     redirect_to root_path unless @product.user != current_user && @product.buy.nil?
+  end
+
+  def product_info
+    @product = Product.find(params[:item_id])
   end
 end

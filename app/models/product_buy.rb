@@ -7,6 +7,8 @@ class ProductBuy
       with: /\A\d{3}-\d{4}\z/,
       message: 'Input correctly'
     }
+    validates :user_id
+    validates :product_id
     validates :token
     validates :city
     validates :street
