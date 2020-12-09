@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
 
   def move_to_index
     @product = Product.find(params[:id])
-    redirect_to action: :index unless @product.user == current_user || @product.buy.nil?
+    redirect_to action: :index unless @product.user == current_user && @product.buy.nil?
   end
 
   def product_info
